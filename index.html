@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASSIGNMENT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box">
+            <form id="form" >
+
+                Name: <br><input type="text" name="name" id="name" placeholder="Type your name..."
+                    autocomplete="off"><br>
+                Contact: <br><input type="number" name="contact" id="contact" placeholder="Type your number..."
+                    autocomplete="off"><br>
+                Email: <br><input type="email" name="email" id="email" placeholder="Enter your email..."
+                    autocomplete="off"><br>
+                Message: <br><textarea name="msg" id="message" cols="40" rows="8" placeholder="Enter your message her"
+                    autocomplete="off"></textarea><br>
+                <input type="submit" onclick="sendemail()" class="btn"></input><br>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+
+        
+        
+        function sendemail() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            console.log(email)
+            let contact = document.getElementById("contact").value;
+            
+            let message = document.getElementById("message").value;
+    
+            let body = "Name:" + name + "<br/> Email:" + email + "<br/> Contact Number:" + contact + "<br/> Messages:" + message;
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "mp24252425@gmail.com",
+                Password: "1402F8F1DC035DE4F9CEDDADFC9122C45710",
+                To: email,
+                From: "mp24252425@gmail.com",
+                Subject: "You had filled the form successfully",
+                Body: body
+            }).then(
+                message => alert(message)
+            );
+        }
+
+
+    </script>
+
+</body>
+
+</html>
